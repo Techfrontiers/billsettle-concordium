@@ -33,6 +33,8 @@ var CCD_CONTRACT_INDEX = 12802;
 var CCD_CONTRACT_SUBINDEX = 0;
 var CCD_OWNER = "3fFCiJ13LTXL9j2GaNAAMq5C3xMNpcdQGTyt6VgkCkxjz1SKW9";
 var CCD_REG_TX = "8d81b6b70c22a92e2c3590906586ea0d8256f629139b1126771571d504e2bb0e";
+var CCD_SET_URI_TX = "99cb30caac8d100394b519d8d13e0e0bccc551f75127a94aa871eca9f2b3f861";
+var CCD_EXPLORER_URI_TX_URL = "https://ccdexplorer.io/testnet/transaction/" + CCD_SET_URI_TX;
 var CCD_TESTNET_GENESIS = "4221332d34e1694168c2a0c0b3fd0f273809612cb13d000d5c2e00e85f50f796";
 var CCD_AGENT_CARD_URL = "https://techfrontiers.github.io/billsettle-concordium/.well-known/agent-card.json";
 var CCD_BADGE_CHECK_URL = "https://agent-registry-mcp.concordium.com/v1/badge-check/" + CCD_BADGE_SHORT;
@@ -297,6 +299,7 @@ function buildConcordiumReceiptBlockHtml() {
       "</div>" +
       '<div class="pay-box" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0">' +
         '<a class="btn secondary sm" href="' + ccdExplorerTxUrl(activeTx) + '" target="_blank" rel="noopener">CCDExplorer Tx ↗</a>' +
+        '<a class="btn secondary sm" href="' + CCD_EXPLORER_URI_TX_URL + '" target="_blank" rel="noopener">URI Pin Tx ↗</a>' +
         '<a class="btn secondary sm" href="' + CCD_CCDSCAN_TOKEN_URL + '" target="_blank" rel="noopener">CCDScan Agent #' + CCD_TOKEN_ID + " ↗</a>" +
         '<a class="btn secondary sm" href="' + CCD_AGENT_CARD_URL + '" target="_blank" rel="noopener">Agent Card JSON ↗</a>' +
         '<button type="button" class="btn secondary sm" id="ccd-copy-receipt-badge">Copy badge</button>' +
@@ -396,6 +399,7 @@ function buildConcordiumDashboardCardHtml() {
         '<a class="btn secondary sm" href="' + CCD_BADGE_CHECK_URL + '" target="_blank" rel="noopener">Live Badge-Check JSON ↗</a>' +
         '<a class="btn secondary sm" href="' + CCD_AGENT_CARD_URL + '" target="_blank" rel="noopener">Agent Card JSON ↗</a>' +
         '<a class="btn secondary sm" href="' + CCD_EXPLORER_TX_URL + '" target="_blank" rel="noopener">CCDExplorer Reg Tx ↗</a>' +
+        '<a class="btn secondary sm" href="' + CCD_EXPLORER_URI_TX_URL + '" target="_blank" rel="noopener">CCDExplorer URI Tx ↗</a>' +
         '<a class="btn secondary sm" href="' + CCD_CCDSCAN_TOKEN_URL + '" target="_blank" rel="noopener">CCDScan Token #' + CCD_TOKEN_ID + " ↗</a>" +
         '<a class="btn secondary sm" href="' + CCD_REGISTRY_DASHBOARD_URL + '" target="_blank" rel="noopener">Registry Dashboard ↗</a>' +
       "</div>" +
