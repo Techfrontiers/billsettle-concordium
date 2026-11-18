@@ -24,9 +24,23 @@ BillSettle is a payment agent for small shops: it settles bills in stablecoin, c
 - Anchored `metadata_hash_hex` (SHA-256): `bd4e0a744cd4489979afaf737d67725e415048b588deabf3a037ee497fff3e07`
 - Live `badge-check`: https://agent-registry-mcp.concordium.com/v1/badge-check/JyP9WvdiYC2ADhyQTirr5 (`badge_valid: true`, `extension_conformant: true`, `verification_present: true`, `verify_url_matches: true`, `hash_matches_on_chain: true`, `issues: []`)
 - Demo: https://techfrontiers.github.io/billsettle-concordium/
+- Demo Video (2:48): https://youtu.be/OZGID50FQqI
 
 ## Status / next steps
 
-See `concordium/STATUS.md` (including the ≤3 min demo video script and Encode Club submission text). Plan: `concordium/INTEGRATION_PLAN.md` (Thai).
+See [`concordium/STATUS.md`](concordium/STATUS.md) (including the ≤3 min demo video script and Encode Club submission text). Plan: [`concordium/INTEGRATION_PLAN.md`](concordium/INTEGRATION_PLAN.md) (Thai).
 
-Next: record demo video ≤3 min + submit on Encode Club before 10 Dec 2026 06:59 Bangkok.
+## Architecture (Settlement vs. Accountability)
+
+1. **Payment Rail (`NEAR Testnet`):** Invoices and `BSDD` stablecoin settlement run on `billsettle-bills.testnet` and `billsettle-token.testnet`.
+2. **Accountability Layer (`Concordium Testnet`):** Registered natively on **CIS-8004 (`<12802,0>`)** as **Agent `#1185`** (badge `JyP9WvdiYC2ADhyQTirr5`), bound to verified human owner `3fFCiJ13LTXL9j2GaNAAMq5C3xMNpcdQGTyt6VgkCkxjz1SKW9`.
+3. **Cryptographic Integrity (`setAgentURI`):** The served A2A Agent Card (`docs/.well-known/agent-card.json`) embeds `concordium-badge/v1` and has its canonical URI and SHA-256 digest pinned on-chain (`bd4e0a744cd4489979afaf737d67725e415048b588deabf3a037ee497fff3e07`).
+4. **Live Verification UX:** Both the merchant dashboard and customer bill receipts verify `badge_valid: true` against Concordium's hosted Registry MCP verifier (`agent-registry-mcp.concordium.com`) alongside live in-browser `crypto.subtle` SHA-256 comparison.
+
+## Path to Production (Mainnet Roadmap)
+
+1. **Mainnet Registry Migration:** Re-register the merchant agent on Concordium Mainnet CIS-8004 (`<10082,0>`) backed by a production Concordium ID / LEI corporate identity, then pin the production `agent-card.json` URI and SHA-256 digest via `setAgentURI`.
+2. **Production Stablecoins & Sponsored UX:** Move from mock `BSDD` testnet tokens to production mainnet stablecoins (or Concordium Protocol-Level Tokens + sponsored transactions so shop buyers never manage gas fees).
+3. **Target Rollout & Remaining Build:** Onboard independent retail and social-commerce merchants (LINE / Telegram / WhatsApp shops) with one-click Concordium ID onboarding, optional `x402` automated invoice-to-agent settlement, and POS/accounting receipt export.
+
+Next: demo video ready (https://youtu.be/OZGID50FQqI, `2:48`) — submit Final Submission on Encode Club when Checkpoint 2 opens (23 Nov 2026 06:59 Bangkok – 10 Dec 2026 06:59 Bangkok).
